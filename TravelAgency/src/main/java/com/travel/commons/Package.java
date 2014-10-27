@@ -1,10 +1,12 @@
 package com.travel.commons;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Package {
@@ -15,9 +17,12 @@ public class Package {
 	private Date startDate;
 	private Date endDate;
 	private int duration;
-	private SightSeeing sightSeeing;
-	private Place place;
-	private Transport transport;
+	@OneToMany
+	private List<SightSeeing> sightSeeings;
+	@OneToMany
+	private List<Place> places;
+	@OneToMany
+	private List<Transport> transports;
 	private double basePrice;
 	private double profit;
 	private int bonusPoint;
@@ -38,9 +43,6 @@ public class Package {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.duration = duration;
-		this.sightSeeing = sightSeeing;
-		this.place = place;
-		this.transport = transport;
 		this.basePrice = basePrice;
 		this.profit = profit;
 		this.bonusPoint = bonusPoint;
@@ -89,28 +91,28 @@ public class Package {
 		this.duration = duration;
 	}
 
-	public SightSeeing getSightSeeing() {
-		return sightSeeing;
+	public List<SightSeeing> getSightSeeings() {
+		return sightSeeings;
 	}
 
-	public void setSightSeeing(SightSeeing sightSeeing) {
-		this.sightSeeing = sightSeeing;
+	public void addSightSeeing(SightSeeing sightSeeing) {
+		sightSeeings.add(sightSeeing);
 	}
 
-	public Place getPlace() {
-		return place;
+	public List<Place> getPlaces() {
+		return places;
 	}
 
 	public void setPlace(Place place) {
-		this.place = place;
+		places.add(place);
 	}
 
-	public Transport getTransport() {
-		return transport;
+	public List<Transport> getTransports() {
+		return transports;
 	}
 
-	public void setTransport(Transport transport) {
-		this.transport = transport;
+	public void addTransport(Transport transport) {
+		transports.add(transport);
 	}
 
 	public double getBasePrice() {

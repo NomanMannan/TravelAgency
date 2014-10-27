@@ -2,6 +2,7 @@ package com.travel.commons;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -24,6 +26,7 @@ public class Person {
 	private String phone;
 	private String email;
 	private Date dob;
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")
 	private UserCredential user;
 

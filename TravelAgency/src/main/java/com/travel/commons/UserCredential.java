@@ -1,12 +1,13 @@
 package com.travel.commons;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
 public class UserCredential {
-
+	@Id
 	private String username;
 	private String password;
 	private boolean enabled = false;
