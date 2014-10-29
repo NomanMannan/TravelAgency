@@ -25,6 +25,7 @@
 				<value>com.travel.commons.Agent</value>
 
 				<value>com.travel.commons.Booking</value>
+				<value>com.travel.commons.PlanMyTripBooking</value>
 				<value>com.travel.commons.PackageBooking</value>
 				<value>com.travel.commons.TransportBooking</value>
 				<value>com.travel.commons.SightSeeingBooking</value>

@@ -90,8 +90,8 @@ public class SightSeeing {
 		return photos;
 	}
 
-	public void setPhotos(List<Photo> photos) {
-		this.photos = photos;
+	public void addPhotos(Photo photo) {
+		photos.add(photo);
 	}
 
 	public Place getPlace() {

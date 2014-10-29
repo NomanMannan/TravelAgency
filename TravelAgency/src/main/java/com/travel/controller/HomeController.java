@@ -1,4 +1,4 @@
-package com.travel.commons;
+package com.travel.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
