@@ -61,7 +61,7 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable>
 	}
 
 	public void create(T entity) {
-		sessionFactory.getCurrentSession().saveOrUpdate(entity);
+		sessionFactory.getCurrentSession().save(entity);
 		if (logger.isDebugEnabled()) {
 			logger.debug(entityName + " saved successfully," + entityName
 					+ " Details=" + entity);

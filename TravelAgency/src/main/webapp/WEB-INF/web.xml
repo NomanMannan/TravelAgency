@@ -9,7 +9,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml </param-value>
 	</context-param>
-	
+
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -31,35 +31,13 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- <filter>
-		<filter-name>OpenSessionInViewFilter</filter-name>
-		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
-		<init-param>
-			<param-name>sessionFactoryBeanName</param-name>
-			<param-value>sessionFactory</param-value>
-		</init-param>
-	</filter>
 	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>OpenSessionInViewFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
- 	 <filter>
-		<filter-name>sessionFilter</filter-name>
-		<filter-class>com.travel.filter.SessionFilter</filter-class>
+		<filter-name>hibernateFilterChain</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>sessionFilter</filter-name>
-		<url-pattern>/*</url-pattern> 
-	</filter-mapping>  -->
+		<filter-name>hibernateFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 </web-app>

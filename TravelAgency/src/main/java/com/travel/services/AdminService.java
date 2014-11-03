@@ -1,5 +1,7 @@
 package com.travel.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -192,6 +194,56 @@ public class AdminService implements IAdminService {
 	public void addTransport(Transport transport) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Country> getCountries() {
+		return countryDAO.getAll();
+	}
+
+	@Override
+	public List<Place> getPlaces() {
+		return placeDAO.getAll();
+	}
+
+	@Override
+	public List<SightSeeing> getSightseeings() {
+		return sightseeingDAO.getAll();
+	}
+
+	@Override
+	public List<Transport> getTransports() {
+		return transportDAO.getAll();
+	}
+
+	@Override
+	public Country getCountry(Long id) {
+		return countryDAO.get(id);
+	}
+
+	@Override
+	public Place getPlace(Long id) {
+		return placeDAO.get(id);
+	}
+
+	@Override
+	public SightSeeing getSightseeing(Long id) {
+		return sightseeingDAO.get(id);
+	}
+
+	@Override
+	public Transport getTransport(Long id) {
+		return transportDAO.get(id);
+	}
+
+	@Override
+	public List<Package> getPackages() {
+		return packageDAO.getAll();
+	}
+
+	@Override
+	public Package getPackage(Long id) {
+		return packageDAO.get(id);
 	}
 
 }

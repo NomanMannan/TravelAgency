@@ -1,5 +1,7 @@
 package com.travel.iservices;
 
+import java.util.List;
+
 import com.travel.commons.Admin;
 import com.travel.commons.Agent;
 import com.travel.commons.Country;
@@ -59,5 +61,25 @@ public interface IAdminService {
 	public void deleteSightseeing(SightSeeing sightseeing);
 
 	public void addTransport(Transport transport);
+
+	public List<Country> getCountries();
+
+	public List<Place> getPlaces();
+
+	public List<SightSeeing> getSightseeings();
+
+	public List<Transport> getTransports();
+
+	public List<Package> getPackages();
+
+	public Country getCountry(Long id);
+
+	public Place getPlace(Long id);
+
+	public SightSeeing getSightseeing(Long id);
+
+	public Transport getTransport(Long id);
+
+	public Package getPackage(Long id);
 
 }

@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Discover Thailand: Add Country</title>
+<title>Discover Thailand: Update Country</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -61,16 +61,25 @@
 	<div id="page-wrapper">
 
 		<div class="panel panel-primary margin_top_20">
-			<div class="panel-heading">Add Country</div>
+			<div class="panel-heading">Update Country: ${country.name}</div>
 			<div class="panel-body">
-				<form:form class="form-horizontal" role="form"
-					commandName="country" action="./" method="post">
+				<form:form class="form-horizontal" role="form" commandName="country"
+					action="./update/" method="post">
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Country ID: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="id"
+								autocomplete="on" value="${country.getId()}" readonly="true" />
+						</div>
+					</div>
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Country Name: </label>
 						<div class="col-sm-7">
 							<form:input type="text" cssClass="form-control" path="name"
-								placeholder="name" autocomplete="off" />
+								placeholder="name" value="${country.getName()}"
+								autocomplete="off" />
 						</div>
 						<div class="col-sm-3">
 							<form:errors path="name" cssClass="error" />
@@ -80,8 +89,9 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Description: </label>
 						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="description"
-								placeholder="description" autocomplete="off" />
+							<form:input type="text" cssClass="form-control"
+								path="description" placeholder="description"
+								value="${country.getDescription()}" autocomplete="off" />
 						</div>
 						<div class="col-sm-3">
 							<form:errors path="description" cssClass="error" />
@@ -90,7 +100,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-success">Save</button>
+							<button type="submit" class="btn btn-success">Update</button>
 						</div>
 					</div>
 

@@ -14,7 +14,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.jsp">Discover</a>
+			<a class="navbar-brand" href="index.jsp">Discover Thailand Co. Limited</a>
 		</div>
 		<!-- /.navbar-header -->
 
@@ -210,15 +210,15 @@
 					</li>
 					<li><a class="active" href="index.jsp"><i
 							class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+					<li><a href="<c:url value="/admin/country/" />"><i class="fa fa-bar-chart-o fa-fw"></i>
 							Country</a>
-					<li><a href="tables.jsp"><i class="fa fa-table fa-fw"></i>
+					<li><a href="<c:url value="/admin/place/" />"><i class="fa fa-table fa-fw"></i>
 							Place</a></li>
-					<li><a href="forms.jsp"><i class="fa fa-edit fa-fw"></i>
+					<li><a href="<c:url value="/admin/sightseeing/" />"><i class="fa fa-edit fa-fw"></i>
 							Sightseeing</a></li>
-					<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+					<li><a href="<c:url value="/admin/transport/" />"><i class="fa fa-wrench fa-fw"></i>
 							Transport</a></li>
-					<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+					<li><a href="<c:url value="/admin/package/" />"><i class="fa fa-sitemap fa-fw"></i>
 							Package</a></li>
 				</ul>
 			</div>
