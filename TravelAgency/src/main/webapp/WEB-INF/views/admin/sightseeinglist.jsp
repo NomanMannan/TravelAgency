@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Discover Thailand Co. Limited: Country</title>
+<title>Discover Thailand Co. Limited: Sightseeing</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -61,38 +61,42 @@
 
 	<div id="page-wrapper">
 
-				<div class="panel panel-primary margin_top_20">
-			<div class="panel-heading">List of Countries</div>
+		<div class="panel panel-primary margin_top_20">
+			<div class="panel-heading">List of Sightseeing</div>
 			<div class="panel-body">
 				<table data-toggle="table" class="table table-hover"
 					data-toolbar="#transform-buttons">
 					<thead>
 						<tr>
-							<th>Country ID</th>
-							<th>Country Name</th>
+							<th>ID</th>
+							<th>Name</th>
 							<th>Description</th>
-							<th>Places</th>
+							<th>Duration</th>
+							<th>Adult Price</th>
+							<th>Child Price</th>
+							<th>Place</th>
 							<th>Action</th>
-							
-
 						</tr>
 					</thead>
-					<c:forEach var="country" items="${countries}">
+					<c:forEach var="sightseeing" items="${sightseeings}">
 						<tbody>
 							<tr>
 
-								<td>${country.id}</td>
-								<td>${country.name}</td>
-								<td>${country.description}</td>
-								<td>${country.places}</td>
-								<td><a href="./${country.id}">Edit</a></td>
+								<td>${sightseeing.id}</td>
+								<td>${sightseeing.name}</td>
+								<td>${sightseeing.description}</td>
+								<td>${sightseeing.durations}</td>
+								<td>${sightseeing.adultPrice}</td>
+								<td>${sightseeing.childPrice}</td>
+								<td>${sightseeing.place}</td>
+								<td><a href="./${sightseeing.id}">Edit</a></td>
 							</tr>
 						</tbody>
 
 					</c:forEach>
 				</table>
 				<a href="./add/">
-					<button type="button" class="btn btn-success">Add Country</button>
+					<button type="button" class="btn btn-success">Add Sightseeing</button>
 				</a>
 			</div>
 		</div>

@@ -162,38 +162,32 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public void updatePlace(Place place) {
-		// TODO Auto-generated method stub
-
+		placeDAO.update(place);
 	}
 
 	@Override
 	public void deletePlace(Place place) {
-		// TODO Auto-generated method stub
-
+		placeDAO.delete(place);
 	}
 
 	@Override
 	public void addSightseeing(SightSeeing sightseeing) {
-		// TODO Auto-generated method stub
-
+		sightseeingDAO.create(sightseeing);
 	}
 
 	@Override
 	public void updateSightseeing(SightSeeing sightseeing) {
-		// TODO Auto-generated method stub
-
+		sightseeingDAO.update(sightseeing);
 	}
 
 	@Override
 	public void deleteSightseeing(SightSeeing sightseeing) {
-		// TODO Auto-generated method stub
-
+		sightseeingDAO.delete(sightseeing);
 	}
 
 	@Override
 	public void addTransport(Transport transport) {
-		// TODO Auto-generated method stub
-
+		transportDAO.create(transport);
 	}
 
 	@Override

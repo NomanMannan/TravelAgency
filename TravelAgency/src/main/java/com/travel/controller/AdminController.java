@@ -80,7 +80,7 @@ public class AdminController {
 	}
 
 	/**
-	 * semester details with section list
+	 * country update form
 	 * 
 	 * @param id
 	 * @param model
@@ -162,6 +162,22 @@ public class AdminController {
 	}
 	
 	/**
+	 * place update form
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/place/{id}", method = RequestMethod.GET)
+	public String getPlaceUpdateForm(@PathVariable long id, Model model) {
+		Place place = adminService.getPlace(id);
+		model.addAttribute("place", place);
+		model.addAttribute("countries", adminService.getCountries());
+		return "admin/placeupdate";
+	}
+
+	/**
 	 * 
 	 * @param place
 	 * @param result
@@ -190,6 +206,82 @@ public class AdminController {
 		model.addAttribute("sightseeings", sightseeings);
 		return "admin/sightseeinglist";
 	}
+	
+
+	/**
+	 * get Sightseeing form
+	 * 
+	 * @param model
+	 * @return form for adding sightseeing
+	 */
+	@RequestMapping(value = "/sightseeing/add/", method = RequestMethod.GET)
+	public String getSightseeingForm(Model model) {
+		model.addAttribute("sightseeing", new SightSeeing());
+		model.addAttribute("places", adminService.getPlaces());
+		return "admin/sightseeingadd";
+	}
+	
+	/**
+	 * 
+	 * @param sightseeing
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/sightseeing/add/", method = RequestMethod.POST)
+	public String createSightseeing(Model model,
+			@Valid @ModelAttribute("sightseeing") SightSeeing sightseeing,
+			BindingResult result) {
+		
+		if (result.hasErrors()) {
+			if (sightseeing.getId() != 0) {
+				model.addAttribute("sightseeings", adminService.getSightseeings());
+				return "admin/sightseeingupdate";
+			} else {
+				model.addAttribute("sightseeings", adminService.getSightseeings());
+				return "admin/sightseeingadd";
+			}
+		}
+
+		adminService.addSightseeing(sightseeing);
+		return "redirect:../";
+	}
+	
+	/**
+	 * sightseeing update form
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/sightseeing/{id}", method = RequestMethod.GET)
+	public String getSightseeingUpdateForm(@PathVariable long id, Model model) {
+		SightSeeing sightseeing = adminService.getSightseeing(id);
+		model.addAttribute("sightseeing", sightseeing);
+		model.addAttribute("places", adminService.getPlaces());
+		return "admin/sightseeingupdate";
+	}
+
+	
+
+	
+	/**
+	 * 
+	 * @param sightseeing
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/sightseeing/update/", method = RequestMethod.POST)
+	public String updateSightseeing(Model model,
+			@Valid @ModelAttribute("sightseeing") SightSeeing sightseeing,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/sightseeingupdate";
+		}
+		adminService.updateSightseeing(sightseeing);
+		return "redirect:../";
+	}
+
 	
 	/**
 	 * 
@@ -269,6 +361,17 @@ public class AdminController {
 						Country country = adminService.getCountry((Long
 								.parseLong(id)));
 						setValue(country);
+					}
+				});
+		
+		binder.registerCustomEditor(Place.class, "place",
+				new PropertyEditorSupport() {
+
+					@Override
+					public void setAsText(String id) {
+						Place place = adminService.getPlace((Long
+								.parseLong(id)));
+						setValue(place);
 					}
 				});
 
