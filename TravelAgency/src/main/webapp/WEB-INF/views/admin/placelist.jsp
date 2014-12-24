@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Discover Thailand Co. Limited: Country</title>
+<title>Discover Thailand Co. Limited: Place</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -62,37 +62,37 @@
 	<div id="page-wrapper">
 
 				<div class="panel panel-primary margin_top_20">
-			<div class="panel-heading">List of Countries</div>
+			<div class="panel-heading">List of Places</div>
 			<div class="panel-body">
 				<table data-toggle="table" class="table table-hover"
 					data-toolbar="#transform-buttons">
 					<thead>
 						<tr>
-							<th>Country ID</th>
-							<th>Country Name</th>
+							<th>Place ID</th>
+							<th>Name</th>
 							<th>Description</th>
-							<th>Places</th>
+							<th>Country</th>
 							<th>Action</th>
 							
 
 						</tr>
 					</thead>
-					<c:forEach var="country" items="${countries}">
+					<c:forEach var="place" items="${places}">
 						<tbody>
 							<tr>
 
-								<td>${country.id}</td>
-								<td>${country.name}</td>
-								<td>${country.description}</td>
-								<td>${country.places}</td>
-								<td><a href="./${country.id}">Edit</a></td>
+								<td>${place.id}</td>
+								<td>${place.name}</td>
+								<td>${place.description}</td>
+								<td>${place.country.getName()}</td>
+								<td><a href="./${place.id}">Edit</a></td>
 							</tr>
 						</tbody>
 
 					</c:forEach>
 				</table>
 				<a href="./add/">
-					<button type="button" class="btn btn-success">Add Country</button>
+					<button type="button" class="btn btn-success">Add Place</button>
 				</a>
 			</div>
 		</div>

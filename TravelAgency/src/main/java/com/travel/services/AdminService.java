@@ -156,7 +156,7 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public void addPlace(Place place) {
-		// TODO Auto-generated method stub
+		placeDAO.create(place);
 
 	}
 

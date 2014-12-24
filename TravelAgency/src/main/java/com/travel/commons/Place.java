@@ -17,7 +17,7 @@ public class Place {
 	@ManyToOne
 	private Country country;
 	private String description;
-	@OneToMany(mappedBy="place")
+	@OneToMany(mappedBy = "place")
 	private List<SightSeeing> sightSeeings;
 
 	public Place() {
@@ -29,6 +29,7 @@ public class Place {
 		this.name = name;
 		this.country = country;
 		this.description = description;
+		country.addPlace(this);
 	}
 
 	public void addSightSeeing(SightSeeing sightSeeing) {
@@ -58,6 +59,7 @@ public class Place {
 
 	public void setCountry(Country country) {
 		this.country = country;
+		country.addPlace(this);
 	}
 
 	public String getDescription() {
@@ -74,6 +76,11 @@ public class Place {
 
 	public void setSightSeeings(List<SightSeeing> sightSeeings) {
 		this.sightSeeings = sightSeeings;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 
 }

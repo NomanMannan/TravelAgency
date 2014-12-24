@@ -1,5 +1,6 @@
 package com.travel.controller;
 
+import java.beans.PropertyEditorSupport;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,11 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.travel.commons.Country;
 import com.travel.commons.Package;
 import com.travel.commons.Place;
@@ -59,6 +61,23 @@ public class AdminController {
 		model.addAttribute("country", new Country());
 		return "admin/countryadd";
 	}
+	
+	/**
+	 * 
+	 * @param country
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/country/add/", method = RequestMethod.POST)
+	public String createCountry(Model model,
+			@Valid @ModelAttribute("country") Country country,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/countryupdate";
+		}
+		adminService.addCountry(country);
+		return "redirect:../";
+	}
 
 	/**
 	 * semester details with section list
@@ -81,29 +100,12 @@ public class AdminController {
 	 * @param result
 	 * @return
 	 */
-	@RequestMapping(value = "/country/add/", method = RequestMethod.POST)
-	public String createCountry(Model model,
-			@Valid @ModelAttribute("country") Country country,
-			BindingResult result) {
-		if (result.hasErrors()) {
-			return "admin/courseupdate";
-		}
-		adminService.addCountry(country);
-		return "redirect:../";
-	}
-
-	/**
-	 * 
-	 * @param country
-	 * @param result
-	 * @return
-	 */
 	@RequestMapping(value = "/country/update/", method = RequestMethod.POST)
 	public String updateCountry(Model model,
 			@Valid @ModelAttribute("country") Country country,
 			BindingResult result) {
 		if (result.hasErrors()) {
-			return "admin/courseupdate";
+			return "admin/countryupdate";
 		}
 		adminService.updateCountry(country);
 		return "redirect:../";
@@ -120,6 +122,62 @@ public class AdminController {
 		model.addAttribute("places", places);
 		return "admin/placelist";
 	}
+	
+	/**
+	 * get Country form
+	 * 
+	 * @param model
+	 * @return form for adding country
+	 */
+	@RequestMapping(value = "/place/add/", method = RequestMethod.GET)
+	public String getPlaceForm(Model model) {
+		model.addAttribute("place", new Place());
+		model.addAttribute("countries", adminService.getCountries());
+		return "admin/placeadd";
+	}
+	
+	/**
+	 * 
+	 * @param place
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/place/add/", method = RequestMethod.POST)
+	public String createPlace(Model model,
+			@Valid @ModelAttribute("place") Place place,
+			BindingResult result) {
+		
+		if (result.hasErrors()) {
+			if (place.getId() != 0) {
+				model.addAttribute("countries", adminService.getCountries());
+				return "admin/placeupdate";
+			} else {
+				model.addAttribute("countries", adminService.getCountries());
+				return "admin/placeadd";
+			}
+		}
+
+		adminService.addPlace(place);
+		return "redirect:../";
+	}
+	
+	/**
+	 * 
+	 * @param place
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/place/update/", method = RequestMethod.POST)
+	public String updatePlace(Model model,
+			@Valid @ModelAttribute("place") Place place,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/placeupdate";
+		}
+		adminService.updatePlace(place);
+		return "redirect:../";
+	}
+	
 	
 	/**
 	 * 
@@ -157,6 +215,73 @@ public class AdminController {
 		return "admin/packagelist";
 	}
 	
-	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+//
+//		binder.registerCustomEditor(Integer.class, "totalSeat",
+//				new PropertyEditorSupport() {
+//
+//					@Override
+//					public void setAsText(String text) {
+//						Integer totalSeat = Integer.parseInt(text);
+//						setValue(totalSeat);
+//					}
+//				});
+
+		binder.registerCustomEditor(Long.class, "id",
+				new PropertyEditorSupport() {
+
+					@Override
+					public void setAsText(String text) {
+						Long id = Long.parseLong(text);
+						setValue(id);
+					}
+				});
+
+//		binder.registerCustomEditor(List.class, "prerequisites",
+//				new CustomCollectionEditor(List.class) {
+//					@Override
+//					protected Object convertElement(Object element) {
+//						Long id = null;
+//						if (element instanceof String
+//								&& !((String) element).equals("")) {
+//							// From the JSP 'element' will be a String
+//							try {
+//								id = Long.parseLong((String) element);
+//							} catch (NumberFormatException e) {
+//								System.out.println("Element was "
+//										+ ((String) element));
+//								e.printStackTrace();
+//							}
+//						} else if (element instanceof Long) {
+//							// From the database 'element' will be a Long
+//							id = (Long) element;
+//						}
+//						return id != null ? adminService.getCourse(id) : null;
+//					}
+//				});
+		
+		binder.registerCustomEditor(Country.class, "country",
+				new PropertyEditorSupport() {
+
+					@Override
+					public void setAsText(String id) {
+						Country country = adminService.getCountry((Long
+								.parseLong(id)));
+						setValue(country);
+					}
+				});
+
+//		binder.registerCustomEditor(Course.class, "course",
+//				new PropertyEditorSupport() {
+//
+//					@Override
+//					public void setAsText(String id) {
+//						Course course = adminService.getCourse((Long
+//								.parseLong(id)));
+//						setValue(course);
+//					}
+//				});
+	}	
 
 }
