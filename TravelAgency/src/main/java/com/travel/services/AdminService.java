@@ -189,6 +189,16 @@ public class AdminService implements IAdminService {
 	public void addTransport(Transport transport) {
 		transportDAO.create(transport);
 	}
+	
+	@Override
+	public void updateTransport(Transport transport) {
+		transportDAO.update(transport);
+	}
+
+	@Override
+	public void deleteTransport(Transport transport) {
+		transportDAO.delete(transport);
+	}
 
 	@Override
 	public List<Country> getCountries() {

@@ -62,6 +62,10 @@ public interface IAdminService {
 
 	public void addTransport(Transport transport);
 
+	public void updateTransport(Transport transport);
+
+	public void deleteTransport(Transport transport);
+
 	public List<Country> getCountries();
 
 	public List<Place> getPlaces();

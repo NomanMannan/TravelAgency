@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Discover Thailand Co. Limited: Country</title>
+<title>Discover Thailand Co. Limited: Transport</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -61,38 +61,39 @@
 
 	<div id="page-wrapper">
 
-				<div class="panel panel-primary margin_top_20">
-			<div class="panel-heading">List of Countries</div>
+		<div class="panel panel-primary margin_top_20">
+			<div class="panel-heading">List of Transport</div>
 			<div class="panel-body">
 				<table data-toggle="table" class="table table-hover"
 					data-toolbar="#transform-buttons">
 					<thead>
 						<tr>
-							<th>Country ID</th>
-							<th>Country Name</th>
-							<th>Description</th>
-							<th>Places</th>
+							<th>Transport ID</th>
+							<th>Transport Name</th>
+							<th>Seats</th>
+							<th>Max Bags</th>
+							<th>Price</th>
 							<th>Action</th>
-							
+
 
 						</tr>
 					</thead>
-					<c:forEach var="country" items="${countries}">
+					<c:forEach var="transport" items="${transports}">
 						<tbody>
 							<tr>
-
-								<td>${country.id}</td>
-								<td>${country.name}</td>
-								<td>${country.description}</td>
-								<td>${country.places}</td>
-								<td><a href="./${country.id}">Edit</a></td>
+								<td>${transport.id}</td>
+								<td>${transport.name}</td>
+								<td>${transport.seats}</td>
+								<td>${transport.maxBag}</td>
+								<td>${transport.price}</td>
+								<td><a href="./${transport.id}">Edit</a></td>
 							</tr>
 						</tbody>
 
 					</c:forEach>
 				</table>
 				<a href="./add/">
-					<button type="button" class="btn btn-success">Add Country</button>
+					<button type="button" class="btn btn-success">Add Transport</button>
 				</a>
 			</div>
 		</div>

@@ -296,6 +296,67 @@ public class AdminController {
 	}
 	
 	/**
+	 * get transport form
+	 * 
+	 * @param model
+	 * @return form for adding country
+	 */
+	@RequestMapping(value = "/transport/add/", method = RequestMethod.GET)
+	public String getTransportForm(Model model) {
+		model.addAttribute("transport", new Transport());
+		return "admin/transportadd";
+	}
+	
+	/**
+	 * 
+	 * @param transport
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/transport/add/", method = RequestMethod.POST)
+	public String createTransport(Model model,
+			@Valid @ModelAttribute("Transport") Transport transport,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/transportupdate";
+		}
+		adminService.addTransport(transport);
+		return "redirect:../";
+	}
+
+	/**
+	 * transport update form
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+
+	@RequestMapping(value = "/transport/{id}", method = RequestMethod.GET)
+	public String getTransportUpdateForm(@PathVariable long id, Model model) {
+		Transport transport = adminService.getTransport(id);
+		model.addAttribute("transport", transport);
+		return "admin/transportupdate";
+	}
+
+	/**
+	 * 
+	 * @param transport
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/transport/update/", method = RequestMethod.POST)
+	public String updateTransport(Model model,
+			@Valid @ModelAttribute("transport") Transport transport,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/transportupdate";
+		}
+		adminService.updateTransport(transport);
+		return "redirect:../";
+	}
+	
+	/**
 	 * 
 	 * @param model
 	 * @return the list of package in the system
