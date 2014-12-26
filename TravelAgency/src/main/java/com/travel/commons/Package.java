@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Package {
@@ -14,13 +16,15 @@ public class Package {
 	@GeneratedValue
 	private long id;
 	private String name;
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	private int duration;
 	@OneToMany
-	private List<SightSeeing> sightSeeings;
-	@OneToMany
 	private List<Place> places;
+	@OneToMany
+	private List<SightSeeing> sightseeings;
 	@OneToMany
 	private List<Transport> transports;
 	private double basePrice;
@@ -35,7 +39,6 @@ public class Package {
 	}
 
 	public Package(String name, Date startDate, Date endDate, int duration,
-			SightSeeing sightSeeing, Place place, Transport transport,
 			double basePrice, double profit, int bonusPoint, String itenarary,
 			String termsAndConditions, String cancellationPolicy) {
 		super();
@@ -91,19 +94,19 @@ public class Package {
 		this.duration = duration;
 	}
 
-	public List<SightSeeing> getSightSeeings() {
-		return sightSeeings;
+	public List<SightSeeing> getSightseeings() {
+		return sightseeings;
 	}
 
-	public void addSightSeeing(SightSeeing sightSeeing) {
-		sightSeeings.add(sightSeeing);
+	public void addSightseeing(SightSeeing sightseeing) {
+		sightseeings.add(sightseeing);
 	}
 
 	public List<Place> getPlaces() {
 		return places;
 	}
-
-	public void setPlace(Place place) {
+	
+	public void addPlace(Place place){
 		places.add(place);
 	}
 
@@ -161,6 +164,18 @@ public class Package {
 
 	public void setCancellationPolicy(String cancellationPolicy) {
 		this.cancellationPolicy = cancellationPolicy;
+	}
+
+	public void setSightseeings(List<SightSeeing> sightseeings) {
+		this.sightseeings = sightseeings;
+	}
+
+	public void setPlaces(List<Place> places) {
+		this.places = places;
+	}
+
+	public void setTransports(List<Transport> transports) {
+		this.transports = transports;
 	}
 
 }

@@ -18,7 +18,7 @@ public class Place {
 	private Country country;
 	private String description;
 	@OneToMany(mappedBy = "place")
-	private List<SightSeeing> sightSeeings;
+	private List<SightSeeing> sightseeings;
 
 	public Place() {
 		// TODO Auto-generated constructor stub
@@ -32,8 +32,8 @@ public class Place {
 		country.addPlace(this);
 	}
 
-	public void addSightSeeing(SightSeeing sightSeeing) {
-		sightSeeings.add(sightSeeing);
+	public void addSightSeeing(SightSeeing sightseeing) {
+		sightseeings.add(sightseeing);
 
 	}
 
@@ -70,12 +70,12 @@ public class Place {
 		this.description = description;
 	}
 
-	public List<SightSeeing> getSightSeeings() {
-		return sightSeeings;
+	public List<SightSeeing> getSightseeings() {
+		return sightseeings;
 	}
 
-	public void setSightSeeings(List<SightSeeing> sightSeeings) {
-		this.sightSeeings = sightSeeings;
+	public void setSightseeings(List<SightSeeing> sightseeings) {
+		this.sightseeings = sightseeings;
 	}
 
 	@Override

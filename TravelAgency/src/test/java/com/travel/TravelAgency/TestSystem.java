@@ -149,8 +149,7 @@ public class TestSystem extends TestCase {
 
 		System.out.println("Create Package");
 
-		Package pac = new Package("Pac1", new Date(), new Date(), 5,
-				sightseeing, place, transport, 100, 10, 100, "1st Pac",
+		Package pac = new Package("Pac1", new Date(), new Date(), 5, 100, 10, 100, "1st Pac",
 				"very good", "no problem");
 
 		packageDAO.create(pac);

@@ -1,11 +1,15 @@
 package com.travel.controller;
 
 import java.beans.PropertyEditorSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.travel.commons.Country;
 import com.travel.commons.Package;
 import com.travel.commons.Place;
@@ -368,18 +373,80 @@ public class AdminController {
 		return "admin/packagelist";
 	}
 	
+
+	/**
+	 * get package form
+	 * 
+	 * @param model
+	 * @return form for adding package
+	 */
+	@RequestMapping(value = "/package/add/", method = RequestMethod.GET)
+	public String getPackageForm(Model model) {
+		model.addAttribute("pack", new Package());
+		model.addAttribute("places", adminService.getPlaces());
+		model.addAttribute("sightseeings", adminService.getSightseeings());
+		model.addAttribute("transports", adminService.getTransports());
+
+		return "admin/packageadd";
+	}
+	
+	/**
+	 * 
+	 * @param package
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/package/add/", method = RequestMethod.POST)
+	public String createPackage(Model model,
+			@Valid @ModelAttribute("pack") Package pack,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/packageupdate";
+		}
+		adminService.addPackage(pack);
+		return "redirect:../";
+	}
+
+	/**
+	 * country update form
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+
+	@RequestMapping(value = "/package/{id}", method = RequestMethod.GET)
+	public String getPackageUpdateForm(@PathVariable long id, Model model) {
+		Package pack = adminService.getPackage(id);
+		model.addAttribute("pack", pack);
+		model.addAttribute("places", adminService.getPlaces());
+		model.addAttribute("sightseeings", adminService.getSightseeings());
+		model.addAttribute("transports", adminService.getTransports());
+		return "admin/packageupdate";
+	}
+
+	/**
+	 * 
+	 * @param country
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value = "/package/update/", method = RequestMethod.POST)
+	public String updatePackage(Model model,
+			@Valid @ModelAttribute("pack") Package pack,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "admin/packageupdate";
+		}
+		adminService.updatePackage(pack);
+		return "redirect:../";
+	}
+
+	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-//
-//		binder.registerCustomEditor(Integer.class, "totalSeat",
-//				new PropertyEditorSupport() {
-//
-//					@Override
-//					public void setAsText(String text) {
-//						Integer totalSeat = Integer.parseInt(text);
-//						setValue(totalSeat);
-//					}
-//				});
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 
 		binder.registerCustomEditor(Long.class, "id",
 				new PropertyEditorSupport() {
@@ -391,28 +458,74 @@ public class AdminController {
 					}
 				});
 
-//		binder.registerCustomEditor(List.class, "prerequisites",
-//				new CustomCollectionEditor(List.class) {
-//					@Override
-//					protected Object convertElement(Object element) {
-//						Long id = null;
-//						if (element instanceof String
-//								&& !((String) element).equals("")) {
-//							// From the JSP 'element' will be a String
-//							try {
-//								id = Long.parseLong((String) element);
-//							} catch (NumberFormatException e) {
-//								System.out.println("Element was "
-//										+ ((String) element));
-//								e.printStackTrace();
-//							}
-//						} else if (element instanceof Long) {
-//							// From the database 'element' will be a Long
-//							id = (Long) element;
-//						}
-//						return id != null ? adminService.getCourse(id) : null;
-//					}
-//				});
+		binder.registerCustomEditor(List.class, "places",
+				new CustomCollectionEditor(List.class) {
+					@Override
+					protected Object convertElement(Object element) {
+						Long id = null;
+						if (element instanceof String
+								&& !((String) element).equals("")) {
+							// From the JSP 'element' will be a String
+							try {
+								id = Long.parseLong((String) element);
+							} catch (NumberFormatException e) {
+								System.out.println("Element was "
+										+ ((String) element));
+								e.printStackTrace();
+							}
+						} else if (element instanceof Long) {
+							// From the database 'element' will be a Long
+							id = (Long) element;
+						}
+						return id != null ? adminService.getPlace(id) : null;
+					}
+				});
+		
+		binder.registerCustomEditor(List.class, "sightseeings",
+				new CustomCollectionEditor(List.class) {
+					@Override
+					protected Object convertElement(Object element) {
+						Long id = null;
+						if (element instanceof String
+								&& !((String) element).equals("")) {
+							// From the JSP 'element' will be a String
+							try {
+								id = Long.parseLong((String) element);
+							} catch (NumberFormatException e) {
+								System.out.println("Element was "
+										+ ((String) element));
+								e.printStackTrace();
+							}
+						} else if (element instanceof Long) {
+							// From the database 'element' will be a Long
+							id = (Long) element;
+						}
+						return id != null ? adminService.getSightseeing(id) : null;
+					}
+				});
+		
+		binder.registerCustomEditor(List.class, "transports",
+				new CustomCollectionEditor(List.class) {
+					@Override
+					protected Object convertElement(Object element) {
+						Long id = null;
+						if (element instanceof String
+								&& !((String) element).equals("")) {
+							// From the JSP 'element' will be a String
+							try {
+								id = Long.parseLong((String) element);
+							} catch (NumberFormatException e) {
+								System.out.println("Element was "
+										+ ((String) element));
+								e.printStackTrace();
+							}
+						} else if (element instanceof Long) {
+							// From the database 'element' will be a Long
+							id = (Long) element;
+						}
+						return id != null ? adminService.getTransport(id) : null;
+					}
+				});
 		
 		binder.registerCustomEditor(Country.class, "country",
 				new PropertyEditorSupport() {

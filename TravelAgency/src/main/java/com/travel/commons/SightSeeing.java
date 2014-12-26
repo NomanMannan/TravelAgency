@@ -36,6 +36,7 @@ public class SightSeeing {
 		this.adultPrice = adultPrice;
 		this.childPrice = childPrice;
 		this.place = place;
+		place.addSightSeeing(this);
 	}
 
 	public long getId() {
@@ -100,6 +101,12 @@ public class SightSeeing {
 
 	public void setPlace(Place place) {
 		this.place = place;
+		place.addSightSeeing(this);
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 
 }

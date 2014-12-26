@@ -72,6 +72,7 @@
 							<th>Name</th>
 							<th>Description</th>
 							<th>Country</th>
+							<th>Sightseeings</th>
 							<th>Action</th>
 							
 
@@ -85,6 +86,7 @@
 								<td>${place.name}</td>
 								<td>${place.description}</td>
 								<td>${place.country.getName()}</td>
+								<td>${place.sightseeings}</td>
 								<td><a href="./${place.id}">Edit</a></td>
 							</tr>
 						</tbody>

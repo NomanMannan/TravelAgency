@@ -120,20 +120,17 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public void addPackage(Package pac) {
-		// TODO Auto-generated method stub
-
+		packageDAO.create(pac);
 	}
 
 	@Override
 	public void updatePackage(Package pac) {
-		// TODO Auto-generated method stub
-
+		packageDAO.update(pac);
 	}
 
 	@Override
 	public void deletePackage(Package pac) {
-		// TODO Auto-generated method stub
-
+		packageDAO.delete(pac);
 	}
 
 	@Override
@@ -189,7 +186,7 @@ public class AdminService implements IAdminService {
 	public void addTransport(Transport transport) {
 		transportDAO.create(transport);
 	}
-	
+
 	@Override
 	public void updateTransport(Transport transport) {
 		transportDAO.update(transport);
