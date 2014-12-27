@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Blog</title>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-migrate-1.2.1.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/superfish.js"></script>
+		<script src="js/jquery.ui.totop.js"></script>
+		<script src="js/jquery.equalheights.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>
+		<script src="js/jquery.easing.1.3.js"></script>
+		<script>
+		$(document).ready(function(){
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+		<!--[if lt IE 8]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+				<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<link rel="stylesheet" media="screen" href="css/ie.css">
+		<![endif]-->
+	</head>
+	<body>
+<!--==============================header=================================-->
+		<header>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="menu_block">
+						<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+							<ul class="sf-menu">
+								<li><a href="index.html">ABOUT</a></li>
+								<li><a href="index-1.html">HOT TOURS</a></li>
+								<li><a href="index-2.html">SPECIAL OFFERS</a></li>
+								<li class="current"><a href="index-3.html">BLOG</a></li>
+								<li><a href="index-4.html">CONTACTS</a></li>
+							</ul>
+						</nav>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="grid_12">
+					<h1>
+						<a href="index.html">
+							<img src="images/logo.png" alt="Your Happy Family">
+						</a>
+					</h1>
+				</div>
+			</div>
+		</header>
+<!--==============================Content=================================-->
+		<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - February 10, 2014!</div>
+			<div class="container_12">
+				<div class="grid_7">
+					<h3>Recent Posts</h3>
+				<form:form class="form-horizontal" role="form" commandName="pack"
+					action="./update/" method="post">
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Package ID: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="id"
+								autocomplete="on" value="${pack.getId()}" readonly="true" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Package Name: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="name"
+								placeholder="name" value="${pack.getName()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="name" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Places:</label>
+						<div class="col-sm-7">
+							<form:select path="places" multiple="true">
+								<form:options items="${places}" itemLabel="name"
+									itemValue="id" />
+							</form:select>
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="places" cssClass="error" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Sightseeings:</label>
+						<div class="col-sm-7">
+							<form:select path="sightseeings" multiple="true">
+								<form:options items="${sightseeings}" itemLabel="name"
+									itemValue="id" />
+							</form:select>
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="sightseeings" cssClass="error" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Transports:</label>
+						<div class="col-sm-7">
+							<form:select path="transports" multiple="true">
+								<form:options items="${transports}" itemLabel="name"
+									itemValue="id" />
+							</form:select>
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="transports" cssClass="error" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Itenarary: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="itenarary"
+								placeholder="itenarary" value="${pack.getItenarary()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="itenarary" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Base Price: </label>
+						<div class="col-sm-7">
+							<form:input type="price" cssClass="form-control" path="basePrice"
+								placeholder="base price" value="${pack.getBasePrice()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="basePrice" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Bonus Point: </label>
+						<div class="col-sm-7">
+							<form:input type="price" cssClass="form-control" path="bonusPoint"
+								placeholder="bonus point" value="${pack.getBonusPoint()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="bonusPoint" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Cancellation Policy: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="cancellationPolicy"
+								placeholder="cancellationPolicy" value="${pack.getCancellationPolicy()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="cancellationPolicy" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Duration: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="duration"
+								placeholder="duration" value="${pack.getDuration()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="duration" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Start Date: </label>
+						<div class="col-sm-7">
+							<form:input type="date" cssClass="form-control" path="startDate"
+								placeholder="start date" value="${pack.getStartDate()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="startDate" cssClass="error" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">End Date: </label>
+						<div class="col-sm-7">
+							<form:input type="date" cssClass="form-control" path="endDate"
+								placeholder="end date" value="${pack.getEndDate()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="endDate" cssClass="error" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Profit: </label>
+						<div class="col-sm-7">
+							<form:input type="price" cssClass="form-control" path="profit"
+								placeholder="profit" value="${pack.getProfit()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="profit" cssClass="error" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Terms and Condition: </label>
+						<div class="col-sm-7">
+							<form:input type="text" cssClass="form-control" path="termsAndConditions"
+								placeholder="terms and conditions" value="${pack.getTermsAndConditions()}" autocomplete="off" />
+						</div>
+						<div class="col-sm-3">
+							<form:errors path="termsAndConditions" cssClass="error" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-success">Update</button>
+						</div>
+					</div>
+
+				</form:form>
+
+				</div>
+				<div class="grid_3 prefix_1">
+					<h3 class="head1">CATEGORIES</h3>
+					<ul class="list">
+						<li><a href="#">Suspendisse massa mi </a></li>
+						<li><a href="#">Porttitor at velit id </a></li>
+						<li><a href="#">Congue adipiscing </a></li>
+						<li><a href="#">Vestibulum vitae porta </a></li>
+						<li><a href="#">Vivamus ac sodales </a></li>
+						<li><a href="#">Massa quis adipiscing </a></li>
+						<li><a href="#">Phasellus hendrerit </a></li>
+						<li><a href="#">Libero in sapien </a></li>
+						<li><a href="#">Dignissim vel imperdiet </a></li>
+					</ul>
+					<h3 class="head1">ARchives</h3>
+					<ul class="list">
+						<li><a href="#">November 2013</a></li>
+						<li><a href="#">October 2013</a></li>
+						<li><a href="#">September 2013</a></li>
+						<li><a href="#">August 2013</a></li>
+						<li><a href="#">July 2013</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+<!--==============================footer=================================-->
+		<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="socials">
+						<a href="#" class="fa fa-facebook"></a>
+						<a href="#" class="fa fa-twitter"></a>
+						<a href="#" class="fa fa-google-plus"></a>
+					</div>
+					<div class="copy">
+						Your Trip (c) 2014 | <a href="#">Privacy Policy</a> | Website Template Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster.com</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script>
+		$(function (){
+			$('#bookingForm').bookingForm({
+				ownerEmail: '#'
+			});
+		})
+		</script>
+	</body>
+</html>
