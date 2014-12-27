@@ -4,9 +4,13 @@ import java.util.List;
 
 import com.travel.commons.Country;
 import com.travel.commons.Package;
+import com.travel.commons.PackageBooking;
 import com.travel.commons.Place;
+import com.travel.commons.PlanMyTripBooking;
 import com.travel.commons.SightSeeing;
+import com.travel.commons.SightSeeingBooking;
 import com.travel.commons.Transport;
+import com.travel.commons.TransportBooking;
 
 public interface ICustomerService {
 	
@@ -29,5 +33,14 @@ public interface ICustomerService {
 	public Transport getTransport(Long id);
 
 	public Package getPackage(Long id);
+	
+	public void addPlanMyTripBooking(PlanMyTripBooking planmytripbooking);
+	
+	public void addPackageBooking(PackageBooking packagebooking);
+	
+	public void addSightseeingBooking(SightSeeingBooking sightseeingbooking);
+	
+	public void addTransportBooking(TransportBooking transportbooking);
+
 
 }

@@ -7,26 +7,25 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 @Entity
 public class PlanMyTripBooking extends Booking {
 
 	private String travelFromCountry;
 	@OneToMany
-	@JoinTable(name="planmytripbooking_country",
-	joinColumns={@JoinColumn(name="booking_id")},
-	inverseJoinColumns={@JoinColumn(name="country_id")})
+	@JoinTable(name = "planmytripbooking_country", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = { @JoinColumn(name = "country_id") })
 	private List<Country> travelToCountries;
 	@OneToMany
-	@JoinTable(name="planmytripbooking_place",
-	joinColumns={@JoinColumn(name="booking_id")},
-	inverseJoinColumns={@JoinColumn(name="place_id")})
+	@JoinTable(name = "planmytripbooking_place", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = { @JoinColumn(name = "place_id") })
 	private List<Place> travelToPlaces;
 	@OneToMany
-	@JoinTable(name="planmytripbooking_sightseeing",
-	joinColumns={@JoinColumn(name="booking_id")},
-	inverseJoinColumns={@JoinColumn(name="sightseeing_id")})
+	@JoinTable(name = "planmytripbooking_sightseeing", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = { @JoinColumn(name = "sightseeing_id") })
 	private List<SightSeeing> travelToSightSeeings;
+	@Temporal(TemporalType.DATE)
 	private Date departureDate;
+	@Temporal(TemporalType.DATE)
 	private Date returnDate;
 	private int adults;
 	private int childs;
@@ -45,7 +44,7 @@ public class PlanMyTripBooking extends Booking {
 		this.childs = childs;
 	}
 
-	public String TravelFromCountry() {
+	public String getTravelFromCountry() {
 		return travelFromCountry;
 	}
 
@@ -107,6 +106,18 @@ public class PlanMyTripBooking extends Booking {
 
 	public void setChilds(int childs) {
 		this.childs = childs;
+	}
+
+	public void setTravelToCountries(List<Country> travelToCountries) {
+		this.travelToCountries = travelToCountries;
+	}
+
+	public void setTravelToPlaces(List<Place> travelToPlaces) {
+		this.travelToPlaces = travelToPlaces;
+	}
+
+	public void setTravelToSightSeeings(List<SightSeeing> travelToSightSeeings) {
+		this.travelToSightSeeings = travelToSightSeeings;
 	}
 
 }
