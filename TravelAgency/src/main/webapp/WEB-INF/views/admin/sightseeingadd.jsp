@@ -16,6 +16,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Discover Thailand: Add Sightseeing</title>
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -80,7 +82,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Description: </label>
 						<div class="col-sm-7">
-							<form:input type="description" cssClass="form-control" path="description"
+							<form:textarea type="description" cssClass="form-control" path="description"
 								placeholder="description" autocomplete="off" />
 						</div>
 						<div class="col-sm-3">

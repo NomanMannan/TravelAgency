@@ -130,14 +130,26 @@ public class HomeController {
 	 * @param result
 	 * @return
 	 */
-	@RequestMapping(value = "/planmytripbooking/add/", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String createPlanMyTripBooking(
 			Model model,
 			@Valid @ModelAttribute("planmytripbooking") PlanMyTripBooking planmytripbooking,
 			BindingResult result) {
+		
 		if (result.hasErrors()) {
-			System.out.println("Errors"+result.getFieldErrorCount());
-			return "booking/error";
+			model.addAttribute("countries", customerService.getCountries());
+			model.addAttribute("places", customerService.getPlaces());
+			
+			List<Package> packages = customerService.getPackages();
+			model.addAttribute("packages", packages);
+
+			List<SightSeeing> sightseeings = customerService.getSightseeings();
+			model.addAttribute("sightseeings", sightseeings);
+
+			List<Transport> transports = customerService.getTransports();
+			model.addAttribute("transports", transports);
+			
+			return "index";
 		}
 		customerService.addPlanMyTripBooking(planmytripbooking);
 		return "booking/successful";

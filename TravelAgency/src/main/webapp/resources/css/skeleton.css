@@ -292,5 +292,11 @@
       width: 0;
       height: 0;
     }
+    
+    .error {
+	font-size: small;
+	color: red;
+	
+}
 
 

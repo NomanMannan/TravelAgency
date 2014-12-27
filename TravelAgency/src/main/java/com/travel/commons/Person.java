@@ -12,6 +12,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Past;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -25,6 +26,7 @@ public class Person {
 	private Address address;
 	private String phone;
 	private String email;
+	@Past
 	private Date dob;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")

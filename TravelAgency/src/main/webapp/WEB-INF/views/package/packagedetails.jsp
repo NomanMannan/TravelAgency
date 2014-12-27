@@ -72,7 +72,7 @@
 				<div class="grid_7">
 					<h4>Package Details: ${pack.getName()}</h4>
 				<form:form class="form-horizontal" role="form" commandName="pack"
-					action="./update/" method="post">
+					action="./booking/" method="post">
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Package Name: ${pack.getName()} </label>
@@ -100,7 +100,7 @@
 					
 					
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Days/Nights: ${pack.duration-1}D/${pack.duration}N</label>
+						<label class="col-sm-2 control-label">Nights/Days: ${pack.duration}N/${pack.duration+1}D</label>
 					</div>
 					
 					<div class="form-group">
@@ -114,7 +114,7 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-success">Update</button>
+							<button type="submit" class="btn btn-success">Book Now</button>
 						</div>
 					</div>
 

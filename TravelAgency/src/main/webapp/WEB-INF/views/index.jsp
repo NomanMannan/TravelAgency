@@ -19,33 +19,31 @@
 <link rel="stylesheet" href="resources/css/style.css">
 
 
-<!-- Bootstrap Core CSS -->
+	<!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 
-<!-- MetisMenu CSS -->
+	<!-- MetisMenu CSS -->
 <link
 	href="<c:url value="/resources/css/plugins/metisMenu/metisMenu.min.css" />"
 	rel="stylesheet">
 
-<!-- Timeline CSS -->
+	<!-- Timeline CSS -->
 <link href="<c:url value="/resources/css/plugins/timeline.css" />"
 	rel="stylesheet">
 
-<!-- Custom CSS -->
+	<!-- Custom CSS -->
 <link href="<c:url value="/resources/css/sb-admin-2.css" />"
 	rel="stylesheet">
 
-<!-- Morris Charts CSS -->
+	<!-- Morris Charts CSS -->
 <link href="<c:url value="/resources/css/plugins/morris.css" />"
 	rel="stylesheet">
 
-<!-- Custom Fonts -->
+	<!-- Custom Fonts -->
 <link
 	href="<c:url value="/resources/font-awesome-4.1.0/css/font-awesome.min.css" />"
 	rel="stylesheet" type="text/css">
-
-
 <script src="resources/js/jquery.js"></script>
 <script src="resources/js/jquery-migrate-1.2.1.js"></script>
 <script src="resources/js/script.js"></script>
@@ -108,11 +106,11 @@
 				<div class="menu_block">
 					<nav class="horizontal-nav full-width horizontalNav-notprocessed">
 						<ul class="sf-menu">
-							<li class="current"><a href="index.jsp">ABOUT</a></li>
-							<li><a href="index-1.html">HOT TOURS</a></li>
-							<li><a href="index-2.html">SPECIAL OFFERS</a></li>
-							<li><a href="index-3.html">BLOG</a></li>
-							<li><a href="index-4.html">CONTACTS</a></li>
+							<li class="current"><a href="index.jsp">HOME</a></li>
+							<li><a href="package.jsp">PACKAGES</a></li>
+							<li><a href="sightseeing.jsp">SIGHTSEEINGS</a></li>
+							<li><a href="transport.jsp">TRANSPORTS</a></li>
+							<li><a href="contact.jsp">CONTACTS</a></li>
 						</ul>
 					</nav>
 					<div class="clear"></div>
@@ -121,8 +119,7 @@
 			<div class="grid_12">
 				<h1>
 					<a href="index.html"> <img src="resources/images/logo.png"
-						alt="Your Happy Family">
-					</a>
+						alt="Your Happy Family"></a>
 				</h1>
 			</div>
 		</div>
@@ -131,29 +128,29 @@
 		<div id="camera_wrap" class="">
 			<div data-src="resources/images/slide.jpg">
 				<div class="caption fadeIn">
-					<h2>LONDON</h2>
+					<h2>Bangkok</h2>
 					<div class="price">
-						FROM <span>$1000</span>
+						FROM <span>$50</span>
 					</div>
-					<a href="#">LEARN MORE</a>
+					<a href="package.jsp">LEARN MORE</a>
 				</div>
 			</div>
 			<div data-src="resources/images/slide1.jpg">
 				<div class="caption fadeIn">
-					<h2>Maldives</h2>
+					<h2>Pattaya</h2>
 					<div class="price">
-						FROM <span>$2000</span>
+						FROM <span>$100</span>
 					</div>
-					<a href="#">LEARN MORE</a>
+					<a href="package.jsp">LEARN MORE</a>
 				</div>
 			</div>
 			<div data-src="resources/images/slide2.jpg">
 				<div class="caption fadeIn">
-					<h2>Venice</h2>
+					<h2>Phuket</h2>
 					<div class="price">
-						FROM <span>$1600</span>
+						FROM <span>$200</span>
 					</div>
-					<a href="#">LEARN MORE</a>
+					<a href="package.jsp">LEARN MORE</a>
 				</div>
 			</div>
 		</div>
@@ -167,11 +164,11 @@
 				<div class="banner">
 					<img src="resources/images/ban_img1.jpg" alt="">
 					<div class="label">
-						<div class="title">Barcelona</div>
+						<div class="title">KUALALAMPUR</div>
 						<div class="price">
-							FROM<span>$ 1000</span>
+							FROM<span>$ 80</span>
 						</div>
-						<a href="#">LEARN MORE</a>
+						<a href="package.jsp">LEARN MORE</a>
 					</div>
 				</div>
 			</div>
@@ -179,11 +176,11 @@
 				<div class="banner">
 					<img src="resources/images/ban_img2.jpg" alt="">
 					<div class="label">
-						<div class="title">GOA</div>
+						<div class="title">SINGAPORE</div>
 						<div class="price">
-							FROM<span>$ 1.500</span>
+							FROM<span>$ 300</span>
 						</div>
-						<a href="#">LEARN MORE</a>
+						<a href="package.jsp">LEARN MORE</a>
 					</div>
 				</div>
 			</div>
@@ -191,11 +188,11 @@
 				<div class="banner">
 					<img src="resources/images/ban_img3.jpg" alt="">
 					<div class="label">
-						<div class="title">PARIS</div>
+						<div class="title">MALDIVES</div>
 						<div class="price">
-							FROM<span>$ 1.600</span>
+							FROM<span>$ 400</span>
 						</div>
-						<a href="#">LEARN MORE</a>
+						<a href="package.jsp">LEARN MORE</a>
 					</div>
 				</div>
 			</div>
@@ -204,7 +201,8 @@
 				<h3>Plan Your Trip</h3>
 
 				<form:form class="form-horizontal" role="form"
-					commandName="planmytripbooking" action="./planmytripbooking/add/" method="post">
+					commandName="planmytripbooking" action="./"
+					method="post">
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Countries:</label>
@@ -255,14 +253,14 @@
 							<form:errors path="departureDate" cssClass="error" />
 						</div>
 					</div>
-										
+
 					<div class="form-group">
 						<label class="col-sm-2 control-label">End Date: </label>
 						<div class="col-sm-7">
 							<form:input type="date" cssClass="form-control" path="returnDate"
 								placeholder="return date" autocomplete="off" />
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-3">
 							<form:errors path="returnDate" cssClass="error" />
 						</div>
 					</div>
@@ -325,19 +323,20 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Notes: </label>
 						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="comments"
+							<form:textarea type="text" cssClass="form-control" path="comments"
 								placeholder="your special notes" autocomplete="off" />
 						</div>
 						<div class="col-sm-3">
 							<form:errors path="comments" cssClass="error" />
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Country: </label>
 						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="travelFromCountry"
-								placeholder="your departure country" autocomplete="off" />
+							<form:input type="text" cssClass="form-control"
+								path="travelFromCountry" placeholder="your departure country"
+								autocomplete="off" />
 						</div>
 						<div class="col-sm-3">
 							<form:errors path="travelFromCountry" cssClass="error" />
@@ -346,10 +345,11 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-success">Plan your Trip</button>
+							<button type="submit" class="btn btn-success">Plan your
+								Trip</button>
 						</div>
 					</div>
-					
+
 
 
 				</form:form>
@@ -443,89 +443,12 @@
 				</table>
 
 
-
-
-
-
 				<h3>Welcome</h3>
 				<img src="resources/images/page1_img1.jpg" alt=""
 					class="img_inner fleft">
 				<div class="extra_wrapper">
-					<p>Lorem ipsum dolor sit ere amet, consectetur ipiscin.</p>
-					In mollis erat mattis neque facilisis, sit ametiol
+					<p>Discover Thailand Co. Ltd, welcome you all.</p>
 				</div>
-				<div class="clear cl1"></div>
-				<p>
-					Find the detailed description of this <span class="col1"><a
-						href="http://blog.templatemonster.com/free-website-templates/"
-						rel="dofollow">freebie</a></span> at TemplateMonster blog.
-				</p>
-				<p>
-					<span class="col1"><a
-						href="http://www.templatemonster.com/category/travel-website-templates/"
-						rel="nofollow">Travel Website Templates</a></span> category offers you a
-					variety of designs that are perfect for travel sphere of business.
-				</p>
-				Proin pharetra luctus diam, a scelerisque eros convallis
-				<h4>Clients’ Quotes</h4>
-				<blockquote class="bq1">
-					<img src="resources/images/page1_img2.jpg" alt=""
-						class="img_inner noresize fleft">
-					<div class="extra_wrapper">
-						<p>Duis massa elit, auctor non pellentesque vel, aliquet sit
-							amet erat. Nullam eget dignissim nisi, aliquam feugiat nibh.</p>
-						<div class="alright">
-							<div class="col1">Miranda Brown</div>
-							<a href="#" class="btn">More</a>
-						</div>
-					</div>
-				</blockquote>
-			</div>
-			<div class="grid_12">
-				<h3 class="head1">Latest News</h3>
-			</div>
-			<div class="grid_4">
-				<div class="block1">
-					<time datetime="2014-01-01">
-						10<span>Jan</span>
-					</time>
-					<div class="extra_wrapper">
-						<div class="text1 col1">
-							<a href="#">Aliquam nibh</a>
-						</div>
-						Proin pharetra luctus diam, any scelerisque eros convallisumsan.
-						Maecenas vehicula egestas
-					</div>
-				</div>
-			</div>
-			<div class="grid_4">
-				<div class="block1">
-					<time datetime="2014-01-01">
-						21<span>Jan</span>
-					</time>
-					<div class="extra_wrapper">
-						<div class="text1 col1">
-							<a href="#">Etiam dui eros</a>
-						</div>
-						Any scelerisque eros vallisumsan. Maecenas vehicula egestas natis.
-						Duis massa elit, auctor non
-					</div>
-				</div>
-			</div>
-			<div class="grid_4">
-				<div class="block1">
-					<time datetime="2014-01-01">
-						15<span>Feb</span>
-					</time>
-					<div class="extra_wrapper">
-						<div class="text1 col1">
-							<a href="#">uamnibh Edeto</a>
-						</div>
-						Ros convallisumsan. Maecenas vehicula egestas venenatis. Duis
-						massa elit, auctor non
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	<!--==============================footer=================================-->
@@ -537,9 +460,7 @@
 						class="fa fa-twitter"></a> <a href="#" class="fa fa-google-plus"></a>
 				</div>
 				<div class="copy">
-					Your Trip (c) 2014 | <a href="#">Privacy Policy</a> | Website
-					Template Designed by <a href="http://www.templatemonster.com/"
-						rel="nofollow">TemplateMonster.com</a>
+					Discover Thailand Co. Ltd. (c) 2014 
 				</div>
 			</div>
 		</div>

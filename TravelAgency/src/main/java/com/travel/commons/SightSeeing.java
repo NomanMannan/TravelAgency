@@ -7,16 +7,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class SightSeeing {
 	@Id
 	@GeneratedValue
 	private long id;
+	@Size(min=5, max=20, message="Name must be between 5 and 20 characters")
 	private String name;
+	@NotNull
 	private int durations;
+	@NotNull
 	private String description;
+	@NotNull
 	private double adultPrice;
+	@NotNull
 	private double childPrice;
 	@OneToMany
 	private List<Photo> photos;

@@ -3,11 +3,14 @@ package com.travel.commons;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 @Entity
 public class SightSeeingBooking extends Booking {
-
+	@NotNull
 	private int adults;
 	private int childs;
+	@Future
 	private Date startDate;
 
 	public SightSeeingBooking() {

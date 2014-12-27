@@ -9,12 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Package {
 	@Id
 	@GeneratedValue
 	private long id;
+	@Size(min=5, max=20, message="Name must be between 5 and 20 characters")
 	private String name;
 	@Temporal(TemporalType.DATE)
 	private Date startDate;

@@ -9,24 +9,32 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class PlanMyTripBooking extends Booking {
 
+	@NotNull(message="Give your departure country")
 	private String travelFromCountry;
 	@OneToMany
 	@JoinTable(name = "planmytripbooking_country", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = { @JoinColumn(name = "country_id") })
+	@NotNull(message="Must select a country")
 	private List<Country> travelToCountries;
 	@OneToMany
 	@JoinTable(name = "planmytripbooking_place", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = { @JoinColumn(name = "place_id") })
+	@NotNull(message="Must select a place")
 	private List<Place> travelToPlaces;
 	@OneToMany
 	@JoinTable(name = "planmytripbooking_sightseeing", joinColumns = { @JoinColumn(name = "booking_id") }, inverseJoinColumns = { @JoinColumn(name = "sightseeing_id") })
 	private List<SightSeeing> travelToSightSeeings;
 	@Temporal(TemporalType.DATE)
+	@Future(message="Must be a future date")
 	private Date departureDate;
 	@Temporal(TemporalType.DATE)
+	@Future(message="Must be a future date")
 	private Date returnDate;
+	@NotNull
 	private int adults;
 	private int childs;
 

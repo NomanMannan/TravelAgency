@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Place {
 	@Id
 	@GeneratedValue
 	private long id;
+	@Size(min=5, max=20, message="Name must be between 5 and 20 characters")
 	private String name;
 	@ManyToOne
 	private Country country;

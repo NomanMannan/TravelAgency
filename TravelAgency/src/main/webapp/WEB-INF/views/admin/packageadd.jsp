@@ -16,6 +16,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Discover Thailand: Add Package</title>
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -119,7 +121,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Itenarary: </label>
 						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="itenarary"
+							<form:textarea type="text" cssClass="form-control" path="itenarary"
 								placeholder="itenarary" autocomplete="off" />
 						</div>
 						<div class="col-sm-3">
@@ -155,7 +157,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Cancellation Policy: </label>
 						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="cancellationPolicy"
+							<form:textarea type="text" cssClass="form-control" path="cancellationPolicy"
 								placeholder="cancellationPolicy" autocomplete="off" />
 						</div>
 						<div class="col-sm-3">
@@ -213,7 +215,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Terms and Condition: </label>
 						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="termsAndConditions"
+							<form:textarea type="text" cssClass="form-control" path="termsAndConditions"
 								placeholder="terms and conditions" autocomplete="off" />
 						</div>
 						<div class="col-sm-3">

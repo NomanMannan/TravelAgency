@@ -17,6 +17,9 @@
 <meta name="author" content="">
 <title>Discover Thailand: Add Country</title>
 
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
@@ -75,14 +78,15 @@
 						<div class="col-sm-3">
 							<form:errors path="name" cssClass="error" />
 						</div>
-					</div>
+					</div>		
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Description: </label>
-						<div class="col-sm-7">
-							<form:input type="text" cssClass="form-control" path="description"
+						<div class="col-sm-7">								
+							<form:textarea id="input" type="text" cssClass="form-control" path="description"
 								placeholder="description" autocomplete="off" />
 						</div>
+						
 						<div class="col-sm-3">
 							<form:errors path="description" cssClass="error" />
 						</div>
