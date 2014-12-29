@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-color: rgb(226,73,71);
+	text-align: center;
+	color: white;
+	
+}
+
+p.error{
+	color: white;
+}
+
+table.formtable{
+	 margin-left:auto; 
+    margin-right:auto;
+	
+border:1px solid white;
+	
+	
+}

@@ -5,12 +5,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class UserCredential {
 	@Id
 	private String username;
 	private String password;
-	private boolean enabled = false;
+	private boolean enabled = true;
 
 	public UserCredential() {
 		// TODO Auto-generated constructor stub

@@ -83,7 +83,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Description: </label>
 						<div class="col-sm-7">								
-							<form:textarea id="input" type="text" cssClass="form-control" path="description"
+							<form:textarea type="text" cssClass="form-control" path="description"
 								placeholder="description" autocomplete="off" />
 						</div>
 						

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public class SightSeeing {
 	@NotNull
 	private int durations;
 	@NotNull
+	@Lob
 	private String description;
 	@NotNull
 	private double adultPrice;

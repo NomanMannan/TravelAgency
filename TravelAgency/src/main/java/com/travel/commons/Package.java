@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,8 +33,11 @@ public class Package {
 	private double basePrice;
 	private double profit;
 	private int bonusPoint;
+	@Lob
 	private String itenarary;
+	@Lob
 	private String termsAndConditions;
+	@Lob
 	private String cancellationPolicy;
 
 	public Package() {

@@ -31,6 +31,7 @@
 			<list>
 
 				<value>com.travel.commons.UserCredential</value>
+				<value>com.travel.commons.UserRole</value>
 				<value>com.travel.commons.Person</value>
 
 				<value>com.travel.commons.Admin</value>

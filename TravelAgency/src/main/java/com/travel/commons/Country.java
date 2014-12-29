@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
@@ -15,6 +16,7 @@ public class Country {
 	private long id;
 	@Size(min=5, max=20, message="Name must be between 5 and 20 characters")
 	private String name;
+	@Lob
 	private String description;
 	@OneToMany(mappedBy="country")
 	private List<Place> places;
